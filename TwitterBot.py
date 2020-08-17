@@ -1,6 +1,8 @@
 import os, random, tweepy, datetime, time
 from random_words import RandomWords
 from PyDictionary import PyDictionary
+import renameGifs
+
 
 consumer_key = "nDZ9rWxijlxGoYIly1ZA0heT0"
 consumer_secret_key = "Yv7OjoX20T2Fi5N6xbffZcK7U9IoB18kqphTWFUACfufJXgiUX"
@@ -14,7 +16,14 @@ auth.set_access_token(access_token,access_token_secret)
 api = tweepy.API(auth)
 
 print("Program Starting.......")
-print("Started successfully")
+print("Started successfully\n\n")
+
+RenameGifs = input("Do you want to rename gifs? (Y/N)")
+if (RenameGifs.lower() == "y"):
+    renameGifs.Start()
+    print("Gifs renamed....continuing\n")
+else:
+    print("\nNot renaming....continuing\n")
 
 def loadRandomWord():
     dictionary = PyDictionary() # declaring dictionary variable  and initialising PyDictionary
@@ -63,12 +72,11 @@ while(True): #always true
 
 
 
-    if (datetime.datetime.now().minute == 30): #Waits until beginning of the hour
+    if (datetime.datetime.now().minute == 00): #Waits until beginning of the hour
         word_of_the_day = loadRandomWord() #initialises loadRandomWord() and assigns its return value to word_of_the_day
         #print("\nRandom Word Loaded") #Duckytest
         Gif_Choice = GrabRandomGif() #initialises GrabRandomGif() and assigns its return value to Gif_Choice
         #print("\nRandom Gif Grabbed") #Duckytest
-
 
         while(word_of_the_day == "NULL_DEFINITION"): # while wotd try/catch produces an error exception, re-tries the method
             word_of_the_day = loadRandomWord()
