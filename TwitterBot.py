@@ -48,7 +48,7 @@ def SendTweet(): #Tries to send the tweet containing the wotd and gif
         Time_Sent = str(datetime.datetime.now()) #Gets current time
         print(f'--------------------\nTweet sent successfully at {Time_Sent} about {word_of_the_day["word"]}\n------------------')
          #Prints to console when a tweet is successfully made, with it's time and what word was tweeted
-         Sleep() #Calls sleep function
+        Sleep() #Calls sleep function
 
     except:
         print("Error Code: GIF_EXCEED")
